@@ -8,7 +8,7 @@ const app = express();
 // cross origin resource sharing  - it will check the frontend with port
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://frontend-blog-app-psi.vercel.app",
     credentials: true,
   })
 );
