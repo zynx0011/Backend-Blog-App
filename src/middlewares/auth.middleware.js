@@ -7,9 +7,9 @@ export const verifyjwt = asyncHandler(async (req, _, next) => {
   try {
     const Token =
       req.cookies?.accessToken ||
-      req.cookies.refreshToken ||
+      req.cookies?.refreshToken ||
       req.header("Authorization")?.replace("Bearer ", "");
-    console.log(Token);
+    console.log(Token ,"access token");
     if (!Token) {
       throw new ApiError(404, "Invalid token");
     }

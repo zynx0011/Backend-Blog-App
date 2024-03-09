@@ -9,12 +9,13 @@ const app = express();
 app.use(
   cors({
     origin: "https://frontend-blog-app-psi.vercel.app",
-    credentials: false,
+    // origin: "http://localhost:5173",
+    credentials: true,
   })
 );
 // const __dirname = path.resolve();
-app.use(express.json({ limit: "16kb" }));
-app.use(express.urlencoded({ extended: true, limit: "16kb" }));
+app.use(express.json({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 // app.use(express.static(path.join(__dirname, "/Frontend/dist")));
 app.use(cookieParser());
 
