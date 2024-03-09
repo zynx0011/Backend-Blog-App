@@ -9,7 +9,7 @@ const app = express();
 app.use(
   cors({
     origin: "https://frontend-blog-app-psi.vercel.app",
-    credentials: true,
+    credentials: false,
   })
 );
 // const __dirname = path.resolve();
