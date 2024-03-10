@@ -262,7 +262,7 @@ const forgotPassword = async (req, res) => {
   //   expiresIn: "5m",
   // });
   // console.log("This is the token  ", token);
-  const link = `http://localhost:5173/reset-password/${user._id}`;
+  const link = `https://frontend-blog-app-psi.vercel.app/reset-password/${user._id}`;
 
   const transporter = nodemailer.createTransport({
     service: "gmail",
