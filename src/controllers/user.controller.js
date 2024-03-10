@@ -67,6 +67,7 @@ const registerUser = asyncHandler(async (req, res, next) => {
   const options = {
     httpOnly: true,
     secure: true,
+    sameSite: "none",
   };
   if (!createdUser) {
     throw new ApiError(500, "Something went wrong while registering the user");
@@ -74,8 +75,8 @@ const registerUser = asyncHandler(async (req, res, next) => {
 
   return res
     .status(201)
-    .cookie("accessToken", accessToken)
-    .cookie("refreshToken", refreshToken)
+    .cookie("accessToken", accessToken, options)
+    .cookie("refreshToken", refreshToken, options)
     .json(new ApiResponse(200, createdUser, "User registered Successfully"));
 });
 
