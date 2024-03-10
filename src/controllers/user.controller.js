@@ -74,8 +74,8 @@ const registerUser = asyncHandler(async (req, res, next) => {
 
   return res
     .status(201)
-    .cookie("accessToken", accessToken, options)
-    .cookie("refreshToken", refreshToken, options)
+    .cookie("accessToken", accessToken)
+    .cookie("refreshToken", refreshToken)
     .json(new ApiResponse(200, createdUser, "User registered Successfully"));
 });
 
@@ -110,7 +110,6 @@ const loginUser = asyncHandler(async (req, res) => {
   const options = {
     httpOnly: true,
     secure: true,
-    
   };
 
   return res
