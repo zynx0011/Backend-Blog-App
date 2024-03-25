@@ -23,7 +23,7 @@ const generateAccessTokenandRefreshToken = async (userId) => {
   }
 };
 
-const registerUser = asyncHandler(async (req, res, next) => {
+const registerUser = asyncHandler(async (req, res) => {
   // get user details from frontend
   // validation - not empty
   // check if user already exists: username, email
@@ -37,7 +37,7 @@ const registerUser = asyncHandler(async (req, res, next) => {
   const { email, username, password } = req.body;
   //console.log("email: ", email);
   if ([email, username, password].some((field) => field?.trim() === "")) {
-    return next(errorHandler(404, "All fields are required"));
+    throw new ApiError(400, "All fields are required");
   }
 
   const existedUser = await User.findOne({
@@ -45,9 +45,7 @@ const registerUser = asyncHandler(async (req, res, next) => {
   });
 
   if (existedUser) {
-    return next(
-      errorHandler(409, "User with email or username already exists")
-    );
+    throw new ApiError(409, "User with email or username already exists");
   }
   //console.log(req.files);
 
